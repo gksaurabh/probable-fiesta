@@ -5,19 +5,19 @@ from agno.db.sqlite import SqliteDb
 from agno.tools.duckduckgo import DuckDuckGoTools
 from agno.tools.yfinance import YFinanceTools
 
-from src.agents.forecaster.forecaster_agent import ForecasterAgent
-from src.agents.historian.historian_agent import HistorianAgent 
-from src.agents.optimist.optimist_agent import OptimistAgent
-from src.agents.pessimist.pessimist_agent import PessimistAgent
-from src.teams.judge.judge_team import JudgeTeam
+from src.agents.audience_insight_agent import AudienceInsightAgent
+from src.agents.competitor_scan_agent import CompetitorScanAgent
+from src.agents.uvp_agent import UVPAgent
+from src.agents.channel_strategy_agent import ChannelStrategyAgent
+from src.teams.statergy_lead_orchestrator import StatergyLeadTeam
 
-forecaster_agent = ForecasterAgent().agent
-historian_agent = HistorianAgent().agent
-optimist_agent = OptimistAgent().agent
-pessimist_agent = PessimistAgent().agent
-judge_team = JudgeTeam().team
+audience_insight_agent = AudienceInsightAgent().agent
+competitor_scan_agent = CompetitorScanAgent().agent
+uvp_agent = UVPAgent().agent
+channel_strategy_agent = ChannelStrategyAgent().agent
+statergy_lead_team = StatergyLeadTeam().team
 
-agent_os = AgentOS(agents=[forecaster_agent, historian_agent, optimist_agent, pessimist_agent], teams=[judge_team])
+agent_os = AgentOS(agents=[audience_insight_agent, competitor_scan_agent, uvp_agent, channel_strategy_agent], teams=[statergy_lead_team])
 app = agent_os.get_app()
 
 if __name__ == "__main__":
