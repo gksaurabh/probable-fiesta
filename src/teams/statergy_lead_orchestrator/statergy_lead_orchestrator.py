@@ -51,7 +51,7 @@ if __name__ == "__main__":
         #     # Access the content attribute from the RunOutput object
         #     print(getattr(response, 'content', str(response)))
 
-        statergy_lead_team.team.print_response("i am thinking of creating a b2b app that helps with agent orchestration in a distributed system", stream=True)
+        statergy_lead_team.team.print_response("I have a website where you can add a link to any webpage to check its WCAG accessibility rating for that webpage. create a market strategy for me and tell me if it is a viable option.", stream=True)
 
     except Exception as e:
         print(f"Error occurred in StatergyLeadTeam: {e}")

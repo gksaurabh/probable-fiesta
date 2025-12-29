@@ -54,6 +54,7 @@ yarn-error.log*
 htmlcov/
 .pytest_cache/
 .tox/
+.deepeval/
 
 # Jupyter Notebook
 .ipynb_checkpoints
@@ -64,6 +65,8 @@ htmlcov/
 *.sqlite3
 data/raw/*
 data/processed/*
+data/ingest/*
+data/runs/*
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 
@@ -75,6 +78,7 @@ logs/
 *.tmp
 *.bak
 *.cache
+status.json
 
 # LanceDB
 *.lance
