@@ -33,64 +33,119 @@ Once an idea is generated or submitted, ClarityAI evaluates its real-world poten
 - **Resource Requirements**: Realistic assessment of time, money, and skill needs
 - **Success Probability**: Data-driven confidence scoring for decision making
 
-## 🎯 Who Is This For?
+## 🤖 System Architecture
 
-### **Creators & Content Builders**
+ClarityAI employs a sophisticated Multi-Agent System (MAS) to analyze ideas from multiple perspectives:
 
-- Discover viral content angles and creative project ideas
-- Validate concepts before investing time and resources
-- Identify market gaps in your creative niche
+1.  **Interviewer Agent**: Engages with the user to clarify and refine the initial concept.
+2.  **Planner Agent**: Structures the raw idea into a comprehensive proposal.
+3.  **Market Agent**: Analyzes target audience, positioning, and competitive landscape.
+4.  **Risk Agent**: Identifies potential pitfalls, regulatory issues, and market challenges.
+5.  **Execution Agent**: Develops an MVP scope and implementation roadmap.
+6.  **Judge Agent**: Synthesizes all findings to provide a final verdict and confidence score.
 
-### **Founders & Entrepreneurs**
+## 🛠️ Tech Stack
 
-- Generate and validate startup ideas with market potential
-- Assess product-market fit before building
-- Make data-driven decisions about which ideas to pursue
-
-### **Marketers & Growth Teams**
-
-- Uncover fresh marketing angles and campaign concepts
-- Validate growth strategies and channel opportunities
-- Identify untapped audience segments
-
-### **Product Builders & Developers**
-
-- Discover feature ideas and product opportunities
-- Validate technical concepts with market demand
-- Prioritize development efforts based on viability
-
-## 🧠 How It Works
-
-1. **Idea Input**: Submit your raw idea or use guided discovery to generate new concepts
-2. **Multi-Agent Analysis**: Our AI agents (strategist, market analyst, risk assessor, and execution planner) evaluate your idea from different angles
-3. **Comprehensive Report**: Receive a detailed analysis covering market potential, risks, opportunities, and next steps
-4. **Strategic Recommendations**: Get clear guidance on whether to pursue, pivot, or pass on the idea
-
-## 🔥 Why ClarityAI?
-
-**Cut Through the Noise**: No more analysis paralysis or endless research rabbit holes
-
-**Evidence-Based Decisions**: Every recommendation is backed by real market data and strategic analysis
-
-**Save Time & Resources**: Validate ideas before you build, not after you fail
-
-**Build with Confidence**: Know exactly why an idea will work (or won't) before you commit
-
-**Strategic Focus**: Transform scattered thoughts into focused, executable strategies
+- **Backend**: Python 3.11+, FastAPI, Agno (Agent Framework), LangChain
+- **Frontend**: React, TypeScript, Vite, Tailwind CSS
+- **Data**: LanceDB (Vector Store), JSON (File Storage)
+- **Tools**: `uv` (Python Package Manager)
 
 ## 🚦 Getting Started
 
-```bash
-# Clone the repository
-git clone https://github.com/gksaurabh/probable-fiesta.git
-cd ClarityAI
+### Prerequisites
 
-# Install dependencies and run
-uv install
-uv run python -m src.main
+- Python 3.11 or higher
+- Node.js 18+ and npm
+- [uv](https://github.com/astral-sh/uv) (Fast Python package installer)
+
+### Installation
+
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/gksaurabh/probable-fiesta.git
+    cd ClarityAI
+    ```
+
+2.  **Environment Setup**
+    Create a `.env` file in the root directory with your API keys:
+    ```bash
+    OPENAI_API_KEY=your_key_here
+    # Add other necessary keys
+    ```
+
+3.  **Install Dependencies**
+    ```bash
+    # Install Python dependencies
+    uv sync
+
+    # Install Frontend dependencies
+    cd clarity-ui
+    npm install
+    cd ..
+    ```
+
+### Running the Application
+
+You can run both the backend and frontend using the provided script:
+
+```bash
+./scripts/dev.sh
 ```
 
-Setup instructions and detailed documentation coming soon!
+Or run them separately:
+
+**Backend:**
+```bash
+uv run uvicorn src.api.server:app --reload --reload-dir src --reload-dir utils --port 8000
+```
+
+**Frontend:**
+```bash
+cd clarity-ui
+npm run dev
+```
+
+Access the application at `http://localhost:5173` (default Vite port).
+
+## 📂 Project Structure
+
+```
+ClarityAI/
+├── charts/             # Helm charts / Deployment configs
+├── clarity-ui/         # React Frontend Application
+├── config/             # Configuration files
+├── containers/         # Docker containers
+├── data/               # Data storage (runs, raw, processed)
+├── docs/               # Documentation
+├── scripts/            # Utility scripts (dev.sh, etc.)
+├── src/                # Backend Source Code
+│   ├── agents/         # Agent definitions (Interviewer, Planner, etc.)
+│   ├── api/            # FastAPI routes and server
+│   ├── contracts/      # Data models and schemas
+│   ├── prompts/        # LLM Prompts
+│   └── storage/        # File-based storage logic
+├── tests/              # Python tests
+└── utils/              # Shared utilities
+```
+
+## 🎯 Who Is This For?
+
+### **Creators & Content Builders**
+- Discover viral content angles and creative project ideas
+- Validate concepts before investing time and resources
+
+### **Founders & Entrepreneurs**
+- Generate and validate startup ideas with market potential
+- Assess product-market fit before building
+
+### **Marketers & Growth Teams**
+- Uncover fresh marketing angles and campaign concepts
+- Validate growth strategies and channel opportunities
+
+### **Product Builders & Developers**
+- Discover feature ideas and product opportunities
+- Validate technical concepts with market demand
 
 ## 🤝 Contributing
 
@@ -98,8 +153,4 @@ We welcome contributions! Whether you're improving the analysis algorithms, addi
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-**Ready to discover your next great idea?** Stop guessing, start building with clarity.
+[MIT License](LICENSE)
